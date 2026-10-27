@@ -258,7 +258,7 @@ public final class XrayBridge: @unchecked Sendable {
                         self._bytesReceived += Int64(packet.count)
                         self.statsLock.unlock()
                     }
-                    flow.writePackets([packet], withProtocols: [NSNumber(value: af)])
+                    if let self { self.packetFlow?.writePackets([packet], withProtocols: [NSNumber(value: af)]) }
                 }
             }
         }
